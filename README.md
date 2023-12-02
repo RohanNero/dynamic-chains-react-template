@@ -4,6 +4,8 @@
 
 ![Alt text](./public/image.png)
 
+![Alt text](./public/image2.png)
+
 ### 💎 Features
 
 The header consists of:
