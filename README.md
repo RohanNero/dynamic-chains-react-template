@@ -4,17 +4,17 @@
 
 ### Features
 
-The header consists of
+The header consists of:
 
-1. a custom rainbow connect button that allows the user to connect to a handful of different wallets with support for additional ones being relatively simple to add.
-2. an option to display the user's address in the form of a QR code.
-3. a button linking the user to the chain's block explorer.
-4. an interactive dropdown menu containing a list of the apps supported chains that you can easily switch to by a single click.
-5. a reactive balance component displaying the user's balance in terms of the chain's native token and in USD next to the currencies symbol.
+1. A custom rainbow connect button that allows the user to connect to a handful of different wallets with support for additional ones being relatively simple to add.
+2. An option to display the user's address in the form of a QR code.
+3. A button linking the user to the chain's block explorer.
+4. An interactive dropdown menu containing a list of the apps supported chains that you can easily switch to by a single click.
+5. A reactive balance component displaying the user's balance in terms of the chain's native token and in USD next to the currencies symbol.
 
 ### Under the hood
 
-This project was built using a handful of components from existing tools and frameworks such as
+This project was built using a handful of components from existing tools and frameworks such as:
 
 1. [Viem](https://viem.sh/docs/getting-started.html)
 2. [Wagmi](https://wagmi.sh/)
