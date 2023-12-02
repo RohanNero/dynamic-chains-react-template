@@ -54,3 +54,7 @@ If you are adding a chain that isn't listed inside `/config/chainData.ts`'s `cha
 you will need to add a pricefeed address from [Chainlink's list](https://docs.chain.link/data-feeds/price-feeds/addresses?network=ethereum&page=1).
 
 If a USD pricefeed doesn't exist on Ethereum mainnet for your chain, then you will need to provide an RPC url for your chain inside of the `chainData` object.
+
+### Preview
+
+![Image of entire screen](./public/image3.png)
