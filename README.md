@@ -2,7 +2,7 @@
 
 💭 This repo showcases a simple reusable header template for developing web3 apps with nextjs 13 app routing.
 
-### Features
+### 💎 Features
 
 The header consists of:
 
@@ -11,14 +11,14 @@ The header consists of:
 3. A button linking the user to the chain's block explorer.
 4. An interactive dropdown menu containing a list of the apps supported chains that you can easily switch to by a single click.
 
-### Under the hood
+### 🧑‍🔧 Under the hood
 
 This project was built using a handful of components from existing tools and frameworks such as:
 
-1. [Viem](https://viem.sh/docs/getting-started.html)
-2. [Wagmi](https://wagmi.sh/)
-3. [Rainbowkit](https://www.rainbowkit.com/)
-4. [Scaffold-eth-2](https://docs.scaffoldeth.io/)
+1. [Viem](https://viem.sh/docs/getting-started.html) 🌤️
+2. [Wagmi](https://wagmi.sh/) 🌥️
+3. [Rainbowkit](https://www.rainbowkit.com/) 🌈
+4. [Scaffold-eth-2](https://docs.scaffoldeth.io/) 🏗️
 
 Special thanks to [Avelous](https://twitter.com/Avelouseth) for his [ETH-Splitter header](https://github.com/Avelous/Eth-Splitter/blob/master/packages/nextjs/components/Header.tsx#L119-L147) which served as a big source of inspiration for this project!
 
