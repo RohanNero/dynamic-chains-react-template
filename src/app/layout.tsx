@@ -9,8 +9,6 @@ import { RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import "@rainbow-me/rainbowkit/styles.css";
 import * as chains from "viem/chains";
 import { wagmiConfig } from "../config/wagmiConfig";
-// import { useNativeCurrencyPrice } from "../hooks/useNativeCurrency";
-// import { useGlobalState } from "../config/globalState";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,16 +19,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // const price = useNativeCurrencyPrice();
-  // const setNativeCurrencyPrice = useGlobalState(
-  //   (state) => state.setNativeCurrencyPrice
-  // );
-  // useEffect(() => {
-  //   if (price > 0) {
-  //     setNativeCurrencyPrice(price);
-  //   }
-  // }, [setNativeCurrencyPrice, price]);
-
   return (
     <html lang="en">
       <WagmiConfig config={wagmiConfig}>

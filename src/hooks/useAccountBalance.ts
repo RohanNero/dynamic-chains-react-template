@@ -1,7 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
 import { useBalance, useNetwork } from "wagmi";
-import { useGlobalState } from "../config/globalState";
-// import { getTargetNetwork } from "~~/utils/scaffold-eth";
 import {
   encodeFunctionData,
   decodeFunctionResult,
@@ -11,15 +9,13 @@ import {
 import aggregatorV3InterfaceABI from "../abi/pricefeedAbi";
 import { chainData } from "../config/chainData";
 
+// This hook gets the user's balance using wagmi's `useBalance()`
+// and gets the user's balance in terms of USD using chainlink's pricefeeds.
 export function useAccountBalance(address?: string) {
   const [isEthBalance, setIsEthBalance] = useState(true);
   const [balance, setBalance] = useState<number | null>(null);
   const [price, setPrice] = useState<number | null>(null);
-  // const price = useGlobalState((state) => state.nativeCurrencyPrice);
   const { chain } = useNetwork();
-
-  console.log("chain:", chain?.id);
-  // console.log("price:", price);
 
   const targetNetworkId = chain?.id;
 
@@ -38,28 +34,28 @@ export function useAccountBalance(address?: string) {
     if (!chain || !chain.id) {
       console.log("Error fetching price: chain is undefined.");
     }
-    // let publicClient: ReturnType<typeof createPublicClient> | undefined;
-    // if (typeof window !== "undefined" && window.ethereum) {
+    // Easier to use mainnet Ethereum pricefeeds instead of swapping URL everytime the user switches chains.
+    // For chains that don't have a native token/USD pricefeed on Ethereum mainnet,
+    // you must pass an rpc url for the chain explicity.
+
+    let url = "";
+    if (chain.id == 250) {
+      url = "https://fantom.blockpi.network/v1/rpc/public";
+    } else {
+      url = process.env.NEXT_PUBLIC_MAINNET_RPC_URL;
+    }
     const publicClient = createPublicClient({
-      // transport: custom(window.ethereum),
-      transport: http(process.env.NEXT_PUBLIC_MAINNET_RPC_URL),
+      transport: http(url),
     });
 
-    console.log("abi:", aggregatorV3InterfaceABI);
     const data = encodeFunctionData({
       abi: aggregatorV3InterfaceABI,
       functionName: "latestRoundData",
     });
-    console.log("data:", data);
-    console.log("to:", chainData[chain.id].priceFeed);
-    console.log("chain:", chain);
-
     const priceData = await publicClient.call({
       data: data,
       to: chainData[chain.id].priceFeed,
-      // to: "0xFF3EEb22B5E3dE6e705b44749C2559d704923FD7",
     });
-    console.log("priceData:", priceData);
     if (!priceData || !priceData.data) {
       console.log("priceData is undefined...");
       return;
@@ -69,16 +65,10 @@ export function useAccountBalance(address?: string) {
       functionName: "latestRoundData",
       data: priceData.data,
     });
-    console.log("decoded price:", decodedPriceData);
     setPrice(Number(decodedPriceData[1]));
-    // } else {
-    //   throw new Error("Window ethereum is undefined!");
-    // }
   };
 
   const onToggleBalance = useCallback(() => {
-    console.log("toggle reached");
-    console.log("toggle price:", price);
     fetchPrice();
     if (price > 0) {
       setIsEthBalance(!isEthBalance);
@@ -86,19 +76,13 @@ export function useAccountBalance(address?: string) {
   }, [isEthBalance, price]);
 
   useEffect(() => {
+    console.log("use effect reached!");
     console.log("fetchedBalance:", fetchedBalanceData);
     if (fetchedBalanceData?.formatted) {
       setBalance(Number(fetchedBalanceData.formatted));
     }
-  }, [fetchedBalanceData]);
-
-  useEffect(() => {
-    console.log("use effect reached!");
     fetchPrice();
   }, [fetchedBalanceData]);
-
-  // console.log("balance:", balance);
-  // console.log("isLoading:", isLoading);
 
   return {
     balance,

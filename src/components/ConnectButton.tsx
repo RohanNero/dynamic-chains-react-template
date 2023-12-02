@@ -17,9 +17,7 @@ import { useAutoConnect } from "../hooks/useAutoConnect";
 import { getBlockExplorerAddressLink } from "../utils/getBlockExplorer";
 import { includedChains, chainData } from "../config/chainData";
 
-/**
- * Custom Wagmi Connect Button (watch balance + custom design)
- */
+// Custom Wagmi Connect Button (watch balance + custom design)
 export const RainbowKitCustomConnectButton = () => {
   useAutoConnect();
   const { disconnect } = useDisconnect();
@@ -219,7 +217,7 @@ export const RainbowKitCustomConnectButton = () => {
                       className="modal cursor-pointer"
                     >
                       <label className="modal-box relative">
-                        {/* dummy input to capture event onclick on modal box */}
+                        {/* Dummy input to capture event onclick on modal box */}
                         <input className="h-0 w-0 absolute top-0 left-0" />
                         <label
                           htmlFor="qrcode-modal"

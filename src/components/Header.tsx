@@ -60,7 +60,6 @@ export const Header = () => {
               </option>
             ))}
         </select>
-        {/* <FaucetButton /> */}
       </div>
       <div className="mr-4">
         <RainbowKitCustomConnectButton />
