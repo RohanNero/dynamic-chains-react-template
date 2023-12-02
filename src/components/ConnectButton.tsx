@@ -12,7 +12,6 @@ import {
   DocumentDuplicateIcon,
   QrCodeIcon,
 } from "@heroicons/react/24/outline";
-// import { Balance } from "~~/components/scaffold-eth";
 import { useAutoConnect } from "../hooks/useAutoConnect";
 import { getBlockExplorerAddressLink } from "../utils/getBlockExplorer";
 import { includedChains, chainData } from "../config/chainData";
@@ -107,25 +106,14 @@ export const RainbowKitCustomConnectButton = () => {
               }
               return (
                 <div className="px-2 flex gap-3 justify-end items-center">
-                  <div className="flex flex-col items-center mr-1">
-                    {/* <Balance
-                      address={account.address}
-                      className="min-h-0 h-auto"
-                    /> */}
-                    <span
-                      className="text-s"
-                      style={{
-                        color:
-                          chainData[chain?.id]?.color?.toString() || "#bbbbbb",
-                      }}
-                    >
-                      {chain?.name}
-                    </span>
-                  </div>
                   <div className="dropdown dropdown-end leading-3">
                     <label
                       tabIndex={0}
-                      className="btn btn-secondary btn-sm pl-0 pr-2 shadow-md dropdown-toggle gap-0 !h-auto"
+                      style={{
+                        backgroundColor:
+                          chainData[chain?.id]?.color?.toString(),
+                      }}
+                      className="btn btn-sm pl-0 pr-2 shadow-md dropdown-toggle gap-0 !h-auto"
                     >
                       <span className="ml-2 mr-1">{account.displayName}</span>
                       <ChevronDownIcon className="h-6 w-4 ml-2 sm:ml-0" />
