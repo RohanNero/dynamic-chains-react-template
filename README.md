@@ -57,15 +57,15 @@ If a USD pricefeed doesn't exist on Ethereum mainnet for your chain, then you wi
 
 ### Preview
 
-Signed in
+Connected
 
 ![Image of entire screen](./public/image3.png)
 
-Signed in while dropdown menu is out
+Connected while dropdown menu is out
 
 ![Image of entire screen with dropdown menu](./public/image4.png)
 
-Signed out
+Not connected
 
 ![Image of entire screen while not connected](./public/image5.png)
 
@@ -73,6 +73,6 @@ When the user is on a chain that isn't supported
 
 ![Wrong network image](./public/wrongNetworkImage.png)
 
-When the user is signed in and the login information menu is down
+When the user is connected and the login information menu is down
 
 ![Login information menu](./public/loginInformation.png)
