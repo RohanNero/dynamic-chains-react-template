@@ -1,4 +1,4 @@
-## Vanilla Dynamic Chains React Template
+## 🍦 Vanilla Dynamic Chains React Template
 
 💭 This repo showcases a simple reusable header template for developing web3 apps with nextjs 13 app routing.
 
