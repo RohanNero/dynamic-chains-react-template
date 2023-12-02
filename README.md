@@ -19,7 +19,7 @@ This project was built using a handful of components from existing tools and fra
 1. [Viem](https://viem.sh/docs/getting-started.html)
 2. [Wagmi](https://wagmi.sh/)
 3. [Rainbowkit](https://www.rainbowkit.com/)
-4. [Scaffold-eth-2] (https://docs.scaffoldeth.io/)
+4. [Scaffold-eth-2](https://docs.scaffoldeth.io/)
 5. [Chainlink](https://docs.chain.link/data-feeds/)
 
 Special thanks to [Avelous](https://twitter.com/Avelouseth) for his [ETH-Splitter header](https://github.com/Avelous/Eth-Splitter/blob/master/packages/nextjs/components/Header.tsx#L119-L147) which served as a big source of inspiration for this project!
