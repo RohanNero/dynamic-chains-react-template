@@ -1,11 +1,9 @@
 import * as chains from "viem/chains";
 
 type ChainAttributes = {
-  // color | [lightThemeColor, darkThemeColor]
-  color: string | [string, string];
-  // Used to fetch price by providing mainnet token address
-  // for networks having native currency other than ETH
-  nativeCurrencyTokenAddress?: string;
+  color: string | [string, string]; // Color for looking cute on frontend
+  priceFeed: string; // pricefeed address for viewing a native currencies value in USD
+  url?: string; // RPC URL for chains that don't have USD pricefeeds on Ethereum mainnet
 };
 
 // To allow your dapp to live on another chain, simply add its chainId to this array.
@@ -64,6 +62,7 @@ export const chainData: Record<string, ChainAttributes> = {
   [chains.fantom.id]: {
     color: "#1969ff",
     priceFeed: "0xf4766552D15AE4d256Ad41B6cf2933482B0680dc", // FTM (On Fantom)
+    url: "https://fantom.blockpi.network/v1/rpc/public", // FTM/USD pricefeed on Ethereum doesn't currently exist
   },
   [chains.fantomTestnet.id]: {
     color: "#1969ff",

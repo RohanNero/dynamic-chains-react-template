@@ -39,8 +39,11 @@ export function useAccountBalance(address?: string) {
     // you must pass an rpc url for the chain explicity.
 
     let url = "";
-    if (chain.id == 250) {
-      url = "https://fantom.blockpi.network/v1/rpc/public";
+    const listedUrl = chainData[chain.id].url;
+    if (listedUrl) {
+      console.log(`Url found: ${listedUrl}!`);
+      console.log(`Using publicClient for ${chain.name}...`);
+      url = listedUrl;
     } else {
       url = process.env.NEXT_PUBLIC_MAINNET_RPC_URL;
     }
@@ -65,6 +68,7 @@ export function useAccountBalance(address?: string) {
       functionName: "latestRoundData",
       data: priceData.data,
     });
+    console.log("price:", decodedPriceData[1]);
     setPrice(Number(decodedPriceData[1]));
   };
 
