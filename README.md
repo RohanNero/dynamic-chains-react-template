@@ -58,3 +58,5 @@ If a USD pricefeed doesn't exist on Ethereum mainnet for your chain, then you wi
 ### Preview
 
 ![Image of entire screen](./public/image3.png)
+
+![Image of entire screen with dropdown menu](./public/image4.png)
