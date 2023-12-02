@@ -12,7 +12,7 @@ import {
   DocumentDuplicateIcon,
   QrCodeIcon,
 } from "@heroicons/react/24/outline";
-// import { Balance } from "~~/components/scaffold-eth";
+import { Balance } from "./Balance";
 import { useAutoConnect } from "../hooks/useAutoConnect";
 import { getBlockExplorerAddressLink } from "../utils/getBlockExplorer";
 import { includedChains, chainData } from "../config/chainData";
@@ -108,10 +108,11 @@ export const RainbowKitCustomConnectButton = () => {
               return (
                 <div className="px-2 flex gap-3 justify-end items-center">
                   <div className="flex flex-col items-center mr-1">
-                    {/* <Balance
+                    <Balance
                       address={account.address}
+                      chainId={chain.id}
                       className="min-h-0 h-auto"
-                    /> */}
+                    />
                     <span
                       className="text-s"
                       style={{
