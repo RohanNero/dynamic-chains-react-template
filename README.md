@@ -2,6 +2,8 @@
 
 💭 This repo showcases a simple reusable header template for developing web3 apps with nextjs 13 app routing.
 
+![Image of the header](image.png)
+
 ### 💎 Features
 
 The header consists of:
