@@ -4,6 +4,8 @@
 
 ![Image of the header](./public/image.png)
 
+![Image of the header with dropdown menu](./public/image2.png)
+
 ### 💎 Features
 
 The header consists of:
