@@ -76,3 +76,7 @@ When the user is on a chain that isn't supported
 When the user is connected and the login information menu is down
 
 ![Login information menu](./public/loginInformation.png)
+
+The QR code component
+
+![QR code](./public/QRCode.png)
