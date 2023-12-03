@@ -22,7 +22,12 @@ export function getBlockExplorerAddressLink(chainId: number, address: string) {
 
   const chainConfig = chains[targetChain];
 
-  if (!chainConfig || !chainConfig.blockExplorers || !chains[targetChain]) {
+  if (
+    !chainConfig ||
+    !("blockExplorers" in chainConfig) ||
+    !chains[targetChain] ||
+    !chainConfig.blockExplorers
+  ) {
     console.log("Block explorer not found!");
     return;
   }
@@ -30,6 +35,10 @@ export function getBlockExplorerAddressLink(chainId: number, address: string) {
   // console.log("blockExplorers" in chainConfig);
 
   //console.log("explorer:", chainConfig.blockExplorers);
+  // if () {
+  //   console.log("Block explorer not found!");
+  //   return;
+  // }
   const blockExplorerBaseURL = chainConfig.blockExplorers;
 
   if (!blockExplorerBaseURL) {
