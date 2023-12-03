@@ -20,8 +20,9 @@ export function getBlockExplorerAddressLink(chainId: number, address: string) {
 
   const targetChain = targetChainArr[0] as keyof typeof chains;
   // @ts-ignore
-  const blockExplorerBaseURL =
-    chains[targetChain]?.blockExplorers?.default?.url;
+  const blockExplorerBaseURL = chains[targetChain]?.blockExplorers
+    ? chains[targetChain]?.blockExplorers?.default?.url
+    : undefined;
 
   if (!blockExplorerBaseURL) {
     return "";
