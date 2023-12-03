@@ -21,8 +21,6 @@ import { includedChains, chainData } from "../config/chainData";
 export const RainbowKitCustomConnectButton = () => {
   useAutoConnect();
   const { disconnect } = useDisconnect();
-  // const { chain } = useNetwork();
-  // const chainId = chain?.id;
   const { switchNetwork } = useSwitchNetwork();
   const [addressCopied, setAddressCopied] = useState(false);
 
