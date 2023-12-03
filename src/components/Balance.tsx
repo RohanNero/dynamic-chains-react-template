@@ -18,7 +18,7 @@ export const Balance = ({
   const { balance, price, isError, isLoading, onToggleBalance, isEthBalance } =
     useAccountBalance(address);
   const currentChain = Object.values(chains).find(
-    (chain) => chain.id === chainId
+    (chain) => chain.id === Number(chainId)
   );
 
   // useEffect(() => {
