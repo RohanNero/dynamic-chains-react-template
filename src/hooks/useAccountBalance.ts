@@ -77,7 +77,7 @@ export function useAccountBalance(address?: string) {
 
   const onToggleBalance = useCallback(() => {
     fetchPrice();
-    if (price > 0) {
+    if ((price ? price : 0) > 0) {
       setIsEthBalance(!isEthBalance);
     }
   }, [isEthBalance, price]);
