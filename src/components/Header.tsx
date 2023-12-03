@@ -1,17 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import { useEffect } from "react";
 import * as chains from "viem/chains";
-import { useNetwork, useSwitchNetwork, useConnect } from "wagmi";
+import { useNetwork, useSwitchNetwork } from "wagmi";
 import { RainbowKitCustomConnectButton } from "./ConnectButton";
 import { includedChains, chainData } from "../config/chainData";
 
 export const Header = () => {
   const { switchNetwork } = useSwitchNetwork();
   const { chain } = useNetwork();
-  const { connect, connectors, error, isLoading, pendingConnector } =
-    useConnect();
+  // const { connect, connectors, error, isLoading, pendingConnector } =
+  //   useConnect();
 
-  const [network, setNetwork] = useState("");
+  // const [network, setNetwork] = useState("");
 
   useEffect(() => {
     if (!chain) return;

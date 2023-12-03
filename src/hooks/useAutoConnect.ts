@@ -4,7 +4,6 @@ import {
   useLocalStorage,
   useReadLocalStorage,
 } from "usehooks-ts";
-import { hardhat } from "viem/chains";
 import { Connector, useAccount, useConnect } from "wagmi";
 
 const SCAFFOLD_WALLET_STROAGE_KEY = "dynamicChains.wallet";

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { QRCodeSVG } from "qrcode.react";
 import CopyToClipboard from "react-copy-to-clipboard";
-import { useDisconnect, useSwitchNetwork, useNetwork } from "wagmi";
+import { useDisconnect, useSwitchNetwork } from "wagmi";
 import {
   ArrowLeftOnRectangleIcon,
   ArrowTopRightOnSquareIcon,
@@ -21,8 +21,8 @@ import { includedChains, chainData } from "../config/chainData";
 export const RainbowKitCustomConnectButton = () => {
   useAutoConnect();
   const { disconnect } = useDisconnect();
-  const { chain } = useNetwork();
-  const chainId = chain?.id;
+  // const { chain } = useNetwork();
+  // const chainId = chain?.id;
   const { switchNetwork } = useSwitchNetwork();
   const [addressCopied, setAddressCopied] = useState(false);
 

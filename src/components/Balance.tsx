@@ -1,11 +1,11 @@
 import { useAccountBalance } from "../hooks/useAccountBalance";
-import { useNetwork } from "wagmi";
-import { useEffect } from "react";
-import { createPublicClient, custom } from "viem";
+// import { useEffect } from "react";
+// import { createPublicClient, custom } from "viem";
 import * as chains from "viem/chains";
 
 type TBalanceProps = {
   address?: string;
+  chainId?: string;
   className?: string;
 };
 
@@ -21,16 +21,16 @@ export const Balance = ({
     (chain) => chain.id === chainId
   );
 
-  let publicClient: ReturnType<typeof createPublicClient> | undefined;
-  useEffect(() => {
-    if (typeof window !== "undefined" && window.ethereum) {
-      publicClient = createPublicClient({
-        transport: custom(window.ethereum),
-      });
-    } else {
-      throw new Error("Window ethereum is undefined!");
-    }
-  }, []);
+  // useEffect(() => {
+  //   let publicClient: ReturnType<typeof createPublicClient> | undefined;
+  //   if (typeof window !== "undefined" && window.ethereum) {
+  //     publicClient = createPublicClient({
+  //       transport: custom(window.ethereum),
+  //     });
+  //   } else {
+  //     throw new Error("Window ethereum is undefined!");
+  //   }
+  // }, []);
 
   if (!address || isLoading || balance === null) {
     return (
