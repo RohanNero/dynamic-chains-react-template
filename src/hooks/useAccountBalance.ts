@@ -39,7 +39,7 @@ export function useAccountBalance(address?: string) {
     // you must pass an rpc url for the chain explicity.
 
     let url = "";
-    const listedUrl = chainData[chain.id].url;
+    const listedUrl = chain?.id ? chainData[chain.id].url : undefined;
     if (listedUrl) {
       console.log(`Url found: ${listedUrl}!`);
       console.log(`Using publicClient for ${chain.name}...`);
