@@ -19,7 +19,6 @@ export function getBlockExplorerAddressLink(chainId: number, address: string) {
   }
 
   const targetChain = targetChainArr[0] as keyof typeof chains;
-  // @ts-expect-error : ignoring error since `blockExplorers` key may or may not be present on some chains
   const blockExplorerBaseURL =
     chains[targetChain]?.blockExplorers?.default?.url;
 
