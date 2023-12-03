@@ -5,7 +5,7 @@ import * as chains from "viem/chains";
 
 type TBalanceProps = {
   address?: string;
-  chainId?: string;
+  chainId: string;
   className?: string;
 };
 
