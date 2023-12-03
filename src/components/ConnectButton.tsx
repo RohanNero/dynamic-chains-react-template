@@ -135,7 +135,11 @@ export const RainbowKitCustomConnectButton = () => {
                     </label>
                     <ul
                       tabIndex={0}
-                      className="dropdown-content menu z-[2] p-2 mt-2 shadow-center shadow-accent bg-slate-200 rounded-box gap-1"
+                      style={{
+                        backgroundColor:
+                          chainData[chain?.id]?.color?.toString(),
+                      }}
+                      className="dropdown-content menu z-[2] p-2 mt-2 shadow-center shadow-accent rounded-box gap-1"
                     >
                       <li>
                         {addressCopied ? (
