@@ -5,7 +5,7 @@ import * as chains from "viem/chains";
 
 type TBalanceProps = {
   address?: string;
-  chainId: string;
+  chainId: number;
   className?: string;
 };
 
@@ -18,7 +18,7 @@ export const Balance = ({
   const { balance, price, isError, isLoading, onToggleBalance, isEthBalance } =
     useAccountBalance(address);
   const currentChain = Object.values(chains).find(
-    (chain) => chain.id === Number(chainId)
+    (chain) => chain.id === chainId
   );
 
   // useEffect(() => {
