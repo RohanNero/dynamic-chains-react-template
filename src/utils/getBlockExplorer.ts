@@ -30,7 +30,7 @@ export function getBlockExplorerAddressLink(chainId: number, address: string) {
   console.log("blockExplorers" in chainConfig);
 
   console.log("explorer:", chainConfig.blockExplorers);
-  if (!chains[targetChain] || !chains[targetChain]?.blockExplorers) {
+  if (!chains[targetChain] || !chainConfig.blockExplorers) {
     console.log("Block explorer not found!");
     return;
   }
