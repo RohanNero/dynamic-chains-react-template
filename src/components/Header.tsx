@@ -36,7 +36,7 @@ export const Header = () => {
           className="select select-sm sm:w-fit w-20 mr-2"
           style={{
             borderWidth: 1,
-            borderColor: chain.id
+            borderColor: chain?.id
               ? chainData[chain.id]?.color?.toString()
               : "#bbbbbb",
           }}
