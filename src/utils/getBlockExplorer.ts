@@ -18,22 +18,18 @@ export function getBlockExplorerAddressLink(chainId: number, address: string) {
     return "";
   }
   const targetChain = targetChainArr[0] as keyof typeof chains;
-  console.log("targetChain:", targetChain);
+  // console.log("targetChain:", targetChain);
 
   const chainConfig = chains[targetChain];
 
-  if (!chainConfig || !("blockExplorers" in chainConfig)) {
+  if (!chainConfig || !chainConfig.blockExplorers || !chains[targetChain]) {
     console.log("Block explorer not found!");
     return;
   }
-  console.log("blockexplorers:");
-  console.log("blockExplorers" in chainConfig);
+  // console.log("blockexplorers:");
+  // console.log("blockExplorers" in chainConfig);
 
-  console.log("explorer:", chainConfig.blockExplorers);
-  if (!chains[targetChain] || !chainConfig.blockExplorers) {
-    console.log("Block explorer not found!");
-    return;
-  }
+  //console.log("explorer:", chainConfig.blockExplorers);
   const blockExplorerBaseURL = chainConfig.blockExplorers;
 
   if (!blockExplorerBaseURL) {
