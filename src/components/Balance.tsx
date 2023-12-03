@@ -63,7 +63,7 @@ export const Balance = ({
           <>
             <span>{balance?.toFixed(4)}</span>
             <span className="text-[0.8em] font-bold ml-1">
-              {currentChain.nativeCurrency.symbol}
+              {currentChain?.nativeCurrency?.symbol}
             </span>
           </>
         ) : (
