@@ -69,7 +69,9 @@ export const Balance = ({
         ) : (
           <>
             <span className="text-[0.8em] font-bold mr-1">$</span>
-            <span>{((balance * price) / 1e8).toFixed(2)}</span>
+            <span>
+              {price ? ((balance * price) / 1e8).toFixed(2) : undefined}
+            </span>
           </>
         )}
       </div>
