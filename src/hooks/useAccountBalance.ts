@@ -45,9 +45,6 @@ export function useAccountBalance(address?: string) {
       console.log(`Using publicClient for ${chain?.name}...`);
       url = listedUrl;
     } else {
-      console.log(
-        `Using mainnet rpc url: ${process.env.NEXT_PUBLIC_MAINNET_RPC_URL}`
-      );
       url = process.env.NEXT_PUBLIC_MAINNET_RPC_URL || "";
     }
     const publicClient = createPublicClient({
