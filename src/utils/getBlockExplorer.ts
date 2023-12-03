@@ -26,11 +26,13 @@ export function getBlockExplorerAddressLink(chainId: number, address: string) {
     console.log("Block explorer not found!");
     return;
   }
+  console.log("blockexplorers:");
   console.log("blockExplorers" in chainConfig);
 
-  console.log("explorer:", chains[targetChain]?.blockExplorers);
+  console.log("explorer:", chainConfig.blockExplorers);
   if (!chains[targetChain] || !chains[targetChain]?.blockExplorers) {
     console.log("Block explorer not found!");
+    return;
   }
   const blockExplorerBaseURL = chains[targetChain]?.blockExplorers
     ? chains[targetChain]?.blockExplorers?.default?.url
