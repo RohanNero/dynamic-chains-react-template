@@ -19,12 +19,17 @@ export function getBlockExplorerAddressLink(chainId: number, address: string) {
   }
 
   const targetChain = targetChainArr[0] as keyof typeof chains;
+  console.log("targetChain:", targetChain);
+  if (!chains[targetChain] || !chains[targetChain].blockexplorers) {
+    console.log("Block explorer not found!");
+  }
   // @ts-ignore
   const blockExplorerBaseURL = chains[targetChain]?.blockExplorers
     ? chains[targetChain]?.blockExplorers?.default?.url
     : undefined;
 
   if (!blockExplorerBaseURL) {
+    console.log("Block explorer URL is undefined!");
     return "";
   }
   if (chainId === chains.hardhat.id) {
