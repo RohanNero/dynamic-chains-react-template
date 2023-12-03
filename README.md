@@ -2,6 +2,8 @@
 
 💭 This repo showcases a simple reusable header template for developing web3 apps with nextjs 13 app routing.
 
+You can view a live example [here](https://dynamic-chains-react-template.vercel.app/)
+
 ![Image of the header](./public/image.png)
 
 ![Image of the header with dropdown menu](./public/image2.png)
