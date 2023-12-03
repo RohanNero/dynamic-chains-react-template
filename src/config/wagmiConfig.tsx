@@ -19,7 +19,7 @@ const allChains = Object.values(chains);
 
 const data = configureChains(allChains, [
   alchemyProvider({
-    apiKey: process.env.NEXT_PUBLIC_ALCHEMY_SEPOLIA_KEY,
+    apiKey: process.env.NEXT_PUBLIC_ALCHEMY_SEPOLIA_KEY || "",
   }),
   publicProvider(),
 ]);
