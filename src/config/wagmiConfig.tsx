@@ -26,7 +26,7 @@ const data = configureChains(allChains, [
 
 const walletsOptions = {
   chains: allChains,
-  projectId: process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID,
+  projectId: process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID || "",
 };
 
 const wallets = [
