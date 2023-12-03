@@ -42,7 +42,7 @@ export function useAccountBalance(address?: string) {
     const listedUrl = chain?.id ? chainData[chain.id].url : undefined;
     if (listedUrl) {
       console.log(`Url found: ${listedUrl}!`);
-      console.log(`Using publicClient for ${chain.name}...`);
+      console.log(`Using publicClient for ${chain?.name}...`);
       url = listedUrl;
     } else {
       url = process.env.NEXT_PUBLIC_MAINNET_RPC_URL;
