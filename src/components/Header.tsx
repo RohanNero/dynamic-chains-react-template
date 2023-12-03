@@ -14,9 +14,9 @@ export const Header = () => {
   // const [network, setNetwork] = useState("");
 
   useEffect(() => {
-    if (!chain) return;
+    if (!chain || !chain.id) return;
     console.log(`Switching to chainId ${chain.id}...`);
-    switchNetwork?.({ chainId: chain.id });
+    switchNetwork?.(chain.id);
   }, [chain]);
 
   return (
