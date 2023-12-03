@@ -25,7 +25,7 @@ export function useAccountBalance(address?: string) {
     isLoading,
     refetch,
   } = useBalance({
-    address,
+    address: address as `0x${string}` | undefined,
     watch: true,
     chainId: targetNetworkId,
   });
