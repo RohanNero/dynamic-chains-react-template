@@ -34,9 +34,7 @@ export function getBlockExplorerAddressLink(chainId: number, address: string) {
     console.log("Block explorer not found!");
     return;
   }
-  const blockExplorerBaseURL = chains[targetChain]?.blockExplorers
-    ? chains[targetChain]?.blockExplorers?.default?.url
-    : undefined;
+  const blockExplorerBaseURL = chainConfig.blockExplorers;
 
   if (!blockExplorerBaseURL) {
     console.log("Block explorer URL is undefined!");
