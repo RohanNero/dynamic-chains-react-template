@@ -17,16 +17,19 @@ export function getBlockExplorerAddressLink(chainId: number, address: string) {
   if (targetChainArr.length === 0) {
     return "";
   }
-
   const targetChain = targetChainArr[0] as keyof typeof chains;
-  const currentChain = chains[targetChain];
-  console.log("currentChain:", currentChain);
   console.log("targetChain:", targetChain);
-  console.log("explorer:", currentChain?.blockExplorers);
-  if (!currentChain || !currentChain?.blockExplorers) {
+
+  const chainConfig = chains[targetChain];
+
+  if (!chainConfig || !("blockExplorers" in chainConfig)) {
     console.log("Block explorer not found!");
   }
-  // @ts-ignore
+
+  console.log("explorer:", chains[targetChain]?.blockExplorers);
+  if (!chains[targetChain] || !chains[targetChain]?.blockExplorers) {
+    console.log("Block explorer not found!");
+  }
   const blockExplorerBaseURL = chains[targetChain]?.blockExplorers
     ? chains[targetChain]?.blockExplorers?.default?.url
     : undefined;
