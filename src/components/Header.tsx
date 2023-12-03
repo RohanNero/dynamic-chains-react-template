@@ -36,7 +36,9 @@ export const Header = () => {
           className="select select-sm sm:w-fit w-20 mr-2"
           style={{
             borderWidth: 1,
-            borderColor: chainData[chain?.id]?.color?.toString() || "#bbbbbb",
+            borderColor: chain.id
+              ? chainData[chain.id]?.color?.toString()
+              : "#bbbbbb",
           }}
           onChange={(event) => {
             const [, id] = event.target.value.split("|");
