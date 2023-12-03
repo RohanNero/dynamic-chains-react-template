@@ -30,9 +30,6 @@ export const RainbowKitCustomConnectButton = () => {
     <ConnectButton.Custom>
       {({ account, chain, openConnectModal, mounted }) => {
         const connected = mounted && account && chain;
-        console.log("chain:", chain);
-        console.log("chain id:", chain?.id);
-        console.log("account:", account);
         const blockExplorerAddressLink =
           account && chain && chain.id
             ? getBlockExplorerAddressLink(chain.id, account.address)
