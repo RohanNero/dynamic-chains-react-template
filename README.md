@@ -14,7 +14,7 @@ The header consists of:
 2. An option to display the user's address in the form of a QR code.
 3. A button linking the user to the chain's block explorer.
 4. An interactive dropdown menu containing a list of the apps supported chains that you can easily switch to by a single click.
-5. A reactive balance component displaying the user's balance in terms of the chain's native token and in USD next to the currencies symbol.
+5. A reactive balance component displaying the user's balance in terms of the chain's native token and in USD next to the currency's symbol.
 
 ### 🧑‍🔧 Under the hood
 
@@ -32,7 +32,7 @@ And Special thanks to [Carlos](https://github.com/carletex) and [Shiv Blonde](ht
 
 ### Quickstart
 
-clone the repo
+Clone the repo
 
 `git clone https://github.com/RohanNero/dynamic-chains-react-template`
 
@@ -61,7 +61,7 @@ Connected
 
 ![Image of entire screen](./public/image3.png)
 
-Connected while dropdown menu is out
+Connected while dropdown menu is down
 
 ![Image of entire screen with dropdown menu](./public/image4.png)
 
