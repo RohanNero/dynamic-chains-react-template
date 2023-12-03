@@ -57,7 +57,9 @@ export function useAccountBalance(address?: string) {
     });
     const priceData = await publicClient.call({
       data: data,
-      to: (chainData[chain?.id]?.priceFeed as `0x${string}`) || "",
+      to:
+        (chain.id ? (chainData[chain?.id]?.priceFeed as `0x${string}`) : "") ||
+        "",
     });
     if (!priceData || !priceData.data) {
       console.log("priceData is undefined...");
