@@ -60,7 +60,7 @@ export function useAccountBalance(address?: string) {
       to:
         (chain.id
           ? (chainData[chain?.id]?.priceFeed as `0x${string}`)
-          : undefined) || "",
+          : undefined) || undefined,
     });
     if (!priceData || !priceData.data) {
       console.log("priceData is undefined...");
