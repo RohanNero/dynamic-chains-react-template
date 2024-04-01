@@ -19,16 +19,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <WagmiConfig config={wagmiConfig}>
-        <RainbowKitProvider chains={allChains}>
-          <body className={inter.className}>
+      <body className={inter.className}>
+        <WagmiConfig config={wagmiConfig}>
+          <RainbowKitProvider chains={allChains}>
             <div>
               <Header />
             </div>
             {children}
-          </body>
-        </RainbowKitProvider>
-      </WagmiConfig>
+          </RainbowKitProvider>
+        </WagmiConfig>
+      </body>
     </html>
   );
 }

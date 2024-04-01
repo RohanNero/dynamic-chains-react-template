@@ -9,7 +9,8 @@ type ChainAttributes = {
 // To allow your dapp to live on another chain, simply add its chainId to this array.
 // Entire list of chains: https://github.com/wevm/viem/blob/main/src/chains/index.ts
 export const includedChains = [
-  1, 11155111, 137, 80001, 100, 43114, 43113, 5, 250,
+  1,
+  8453, //250,
 ];
 
 // If adding a chain not listed below, provide a hex string color and a pricefeed address
@@ -79,5 +80,9 @@ export const chainData: Record<string, ChainAttributes> = {
   [chains.avalancheFuji.id]: {
     color: "#FFC033",
     priceFeed: "0xFF3EEb22B5E3dE6e705b44749C2559d704923FD7", // AVAX (On Ethereum)
+  },
+  [chains.base.id]: {
+    color: "#0000FF",
+    priceFeed: "0x71041dddad3595F9CEd3DcCFBe3D1F4b0a16Bb70",
   },
 };

@@ -39,7 +39,10 @@ export function useAccountBalance(address?: string) {
     // you must pass an rpc url for the chain explicity.
 
     let url = "";
-    const listedUrl = chain?.id ? chainData[chain.id].url : undefined;
+    const listedUrl =
+      chain?.id && chainData[chain?.id]?.url
+        ? chainData[chain.id].url
+        : undefined;
     if (listedUrl) {
       console.log(`Url found: ${listedUrl}!`);
       console.log(`Using publicClient for ${chain?.name}...`);
@@ -55,6 +58,21 @@ export function useAccountBalance(address?: string) {
       abi: aggregatorV3InterfaceABI,
       functionName: "latestRoundData",
     });
+    console.log("data:", data);
+    console.log(
+      "to:",
+      (chain?.id
+        ? (chainData[chain?.id]?.priceFeed as `0x${string}`)
+        : undefined) || undefined
+    );
+    if (
+      !(chain?.id
+        ? (chainData[chain?.id]?.priceFeed as `0x${string}`)
+        : undefined)
+    ) {
+      console.log("pricefeed address is undefined...");
+      return;
+    }
     const priceData = await publicClient.call({
       data: data,
       to:

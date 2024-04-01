@@ -21,17 +21,6 @@ export const Balance = ({
     (chain) => chain.id === chainId
   );
 
-  // useEffect(() => {
-  //   let publicClient: ReturnType<typeof createPublicClient> | undefined;
-  //   if (typeof window !== "undefined" && window.ethereum) {
-  //     publicClient = createPublicClient({
-  //       transport: custom(window.ethereum),
-  //     });
-  //   } else {
-  //     throw new Error("Window ethereum is undefined!");
-  //   }
-  // }, []);
-
   if (!address || isLoading || balance === null) {
     return (
       <div className="animate-pulse flex space-x-4">

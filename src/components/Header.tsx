@@ -8,10 +8,6 @@ import { includedChains, chainData } from "../config/chainData";
 export const Header = () => {
   const { switchNetwork } = useSwitchNetwork();
   const { chain } = useNetwork();
-  // const { connect, connectors, error, isLoading, pendingConnector } =
-  //   useConnect();
-
-  // const [network, setNetwork] = useState("");
 
   useEffect(() => {
     if (!chain || !chain.id) return;
@@ -23,11 +19,11 @@ export const Header = () => {
     <div className="top-0 border-b border-gray-400 min-h-0 flex flex-row gap-3 items-center justify-end">
       <div className="mr-4 my-4">
         <select
-          defaultValue={
-            chain?.id && includedChains.includes(chain?.id)
-              ? undefined
-              : "Select Network"
-          }
+          // defaultValue={
+          //   chain?.id && includedChains.includes(chain?.id)
+          //     ? undefined
+          //     : "Select Network"
+          // }
           value={
             chain?.id && includedChains.includes(chain?.id)
               ? undefined
@@ -56,7 +52,7 @@ export const Header = () => {
                   color:
                     chainData[chainValue.id]?.color?.toString() || "#bbbbbb",
                 }}
-                selected={chain?.id === chainValue.id}
+                //selected={chain?.id === chainValue.id}
               >
                 {chainValue.name}
               </option>
