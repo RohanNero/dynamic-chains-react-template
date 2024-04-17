@@ -9,6 +9,9 @@ import {
 import aggregatorV3InterfaceABI from "../abi/pricefeedAbi";
 import { chainData } from "../config/chainData";
 
+// This hook is modified from Scaffold-eth 2!
+// Check them out: https://github.com/scaffold-eth/scaffold-eth-2
+
 // This hook gets the user's balance using wagmi's `useBalance()`
 // and gets the user's balance in terms of USD using chainlink's pricefeeds.
 export function useAccountBalance(address?: string) {

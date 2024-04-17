@@ -9,8 +9,7 @@ import { Connector, useAccount, useConnect } from "wagmi";
 const DYNAMIC_WALLET_STORAGE_KEY = "dynamicChains.wallet";
 const WAGMI_WALLET_STORAGE_KEY = "wagmi.wallet";
 
-// This hook is taken from Scaffold-eth 2!
-// Check them out: https://github.com/scaffold-eth/scaffold-eth-2
+
 
 // ID of the SAFE connector instance
 const SAFE_ID = "safe";
