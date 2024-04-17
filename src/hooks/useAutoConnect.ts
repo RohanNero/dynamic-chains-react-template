@@ -6,8 +6,11 @@ import {
 } from "usehooks-ts";
 import { Connector, useAccount, useConnect } from "wagmi";
 
-const SCAFFOLD_WALLET_STROAGE_KEY = "dynamicChains.wallet";
+const DYNAMIC_WALLET_STORAGE_KEY = "dynamicChains.wallet";
 const WAGMI_WALLET_STORAGE_KEY = "wagmi.wallet";
+
+// This hook is taken from Scaffold-eth 2!
+// Check them out: https://github.com/scaffold-eth/scaffold-eth-2
 
 // ID of the SAFE connector instance
 const SAFE_ID = "safe";
@@ -47,7 +50,7 @@ export const useAutoConnect = (): void => {
     WAGMI_WALLET_STORAGE_KEY
   );
   const [walletId, setWalletId] = useLocalStorage<string>(
-    SCAFFOLD_WALLET_STROAGE_KEY,
+    DYNAMIC_WALLET_STORAGE_KEY,
     wagmiWalletValue ?? ""
   );
   const connectState = useConnect();
