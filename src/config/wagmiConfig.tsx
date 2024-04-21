@@ -40,17 +40,11 @@ const wagmiConnectors = connectorsForWallets(
   }
 );
 
-const getRpcUrl = (chainId: string) => {
-  console.log("getRpcUrl input:", chainId);
-
-  return undefined;
-};
-
 // Core Wagmi Config object
 export const wagmiConfig = createConfig({
   connectors: wagmiConnectors,
-  chains: getEnabledChains(), // change this to use our includedChains array in chainData.ts (will need function to assemble the array)
+  chains: getEnabledChains(), 
   client({ chain }) {
-    return createClient({ chain, transport: http(getRpcUrl(chain.id)) }); // Initialize empty viem client as default
+    return createClient({ chain, transport: http() }); // Initialize empty viem client as default
   },
 });
