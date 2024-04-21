@@ -9,27 +9,22 @@ import * as chains from "viem/chains";
 export function getBlockExplorerAddressLink(chainId: number, address: string) {
   const chainNames = Object.keys(chains);
 
-  const targetChainArr = chainNames.filter((chainName) => {
+  const targetChain = chainNames.find((chainName) => {
     const wagmiChain = chains[chainName as keyof typeof chains];
     return wagmiChain.id === chainId;
   });
 
-  if (targetChainArr.length === 0) {
+  if (targetChain == undefined) {
     return "";
   }
-  const targetChain = targetChainArr[0] as keyof typeof chains;
 
   const chainConfig = chains[targetChain];
 
-  if (
-    !chainConfig ||
-    !("blockExplorers" in chainConfig) ||
-    !chainConfig.blockExplorers
-  ) {
+  if (!chainConfig || !chainConfig?.blockExplorers) {
     console.log("Block explorer not found!");
     return;
   }
-  const blockExplorerBaseURL = chainConfig.blockExplorers;
+  const blockExplorerBaseURL = chainConfig?.blockExplorers?.default?.url;
 
   if (!blockExplorerBaseURL) {
     console.log("Block explorer URL is undefined!");

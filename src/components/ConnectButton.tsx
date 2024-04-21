@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { QRCodeSVG } from "qrcode.react";
 import CopyToClipboard from "react-copy-to-clipboard";
-import { useDisconnect, useSwitchNetwork } from "wagmi";
+import { useDisconnect, useSwitchChain } from "wagmi";
 import {
   ArrowLeftOnRectangleIcon,
   ArrowTopRightOnSquareIcon,
@@ -13,15 +13,13 @@ import {
   QrCodeIcon,
 } from "@heroicons/react/24/outline";
 import { Balance } from "./Balance";
-import { useAutoConnect } from "../hooks/useAutoConnect";
 import { getBlockExplorerAddressLink } from "../utils/getBlockExplorer";
 import { includedChains, chainData } from "../config/chainData";
 
 // Custom Wagmi Connect Button (watch balance + custom design)
 export const RainbowKitCustomConnectButton = () => {
-  useAutoConnect();
   const { disconnect } = useDisconnect();
-  const { switchNetwork } = useSwitchNetwork();
+  const { switchChain } = useSwitchChain();
   const [addressCopied, setAddressCopied] = useState(false);
 
   return (
@@ -66,7 +64,7 @@ export const RainbowKitCustomConnectButton = () => {
                           className="btn-sm !rounded-xl flex py-3 gap-3"
                           type="button"
                           onClick={() => {
-                            if (chain.id) switchNetwork?.(1); // Hard-coded to mainnet Ethereum
+                            if (chain.id) switchChain?.(1); // Hard-coded to mainnet Ethereum
                           }}
                         >
                           <ArrowsRightLeftIcon className="h-6 w-4 ml-2 sm:ml-0" />
@@ -123,7 +121,7 @@ export const RainbowKitCustomConnectButton = () => {
                         backgroundColor:
                           chainData[chain?.id]?.color?.toString(),
                       }}
-                      className="btn btn-sm pl-0 pr-2 shadow-md dropdown-toggle gap-0 !h-auto"
+                      className="btn btn-sm pl-0 pr-2 shadow-md dropdown-toggle gap-0"
                     >
                       <span className="ml-2 mr-1">{account.displayName}</span>
                       <ChevronDownIcon className="h-6 w-4 ml-2 sm:ml-0" />
@@ -134,7 +132,7 @@ export const RainbowKitCustomConnectButton = () => {
                         backgroundColor:
                           chainData[chain?.id]?.color?.toString(),
                       }}
-                      className="dropdown-content menu z-[2] p-2 mt-2 shadow-center shadow-accent rounded-box gap-1"
+                      className="dropdown-content menu p-2 mt-2 shadow-center shadow-accent rounded-box gap-1"
                     >
                       <li>
                         {addressCopied ? (
@@ -143,7 +141,7 @@ export const RainbowKitCustomConnectButton = () => {
                               className="text-xl font-normal h-6 w-4 cursor-pointer ml-2 sm:ml-0"
                               aria-hidden="true"
                             />
-                            <span className=" whitespace-nowrap">
+                            <span className="whitespace-nowrap">
                               Copy address
                             </span>
                           </div>
@@ -221,7 +219,7 @@ export const RainbowKitCustomConnectButton = () => {
                     >
                       <label className="modal-box relative">
                         {/* Dummy input to capture event onclick on modal box */}
-                        <input className="h-0 w-0 absolute top-0 left-0" />
+                        {/* <input className="h-0 w-0 absolute top-0 left-0" /> */}
                         <label
                           htmlFor="qrcode-modal"
                           className="btn btn-ghost btn-sm btn-circle absolute right-3 top-3"

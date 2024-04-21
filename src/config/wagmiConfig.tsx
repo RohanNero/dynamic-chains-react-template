@@ -1,62 +1,56 @@
 import * as dotenv from "dotenv";
 dotenv.config();
 import * as chains from "viem/chains";
-import { createConfig, configureChains } from "wagmi";
+import { createConfig } from "wagmi";
+import { createClient, http } from "viem";
 import {
-  braveWallet,
-  coinbaseWallet,
-  ledgerWallet,
   metaMaskWallet,
   rainbowWallet,
-  safeWallet,
+  oneInchWallet,
+  phantomWallet,
   walletConnectWallet,
 } from "@rainbow-me/rainbowkit/wallets";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
 import { connectorsForWallets } from "@rainbow-me/rainbowkit";
+import { chainData } from "./chainData";
+import { getEnabledChains } from "../utils/getEnabledChains";
 
 const allChains = Object.values(chains);
 
-const data = configureChains(allChains, [
-  alchemyProvider({
-    apiKey: process.env.NEXT_PUBLIC_ALCHEMY_SEPOLIA_KEY || "",
-  }),
-  publicProvider(),
-]);
+// List of connectors we allow the connect button to use
+// To update the list change the wallets array
+// List of connectors: https://www.rainbowkit.com/docs/custom-wallet-list
+const wagmiConnectors = connectorsForWallets(
+  [
+    {
+      groupName: "Supported Wallets",
+      wallets: [
+        metaMaskWallet,
+        walletConnectWallet,
+        rainbowWallet,
+        oneInchWallet,
+        phantomWallet,
+      ],
+    },
+  ],
+  {
+    appName: "Dynamic Chains React Template",
+    projectId: process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID || "", // Get a project Id for free at https://cloud.walletconnect.com/app/
+  }
+);
 
-const walletsOptions = {
-  chains: allChains,
-  projectId:
-    process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID ||
-    "bf9f8f75a05660ae3d4617328ab520e7",
+const getRpcUrl = (chainId: string) => {
+  console.log("getRpcUrl input:", chainId);
+
+  return undefined;
 };
 
-const wallets = [
-  metaMaskWallet({ ...walletsOptions, shimDisconnect: true }),
-  walletConnectWallet(walletsOptions),
-  ledgerWallet(walletsOptions),
-  braveWallet(walletsOptions),
-  coinbaseWallet({
-    ...walletsOptions,
-    appName: "dynamic-chains-react-template",
-  }),
-  rainbowWallet(walletsOptions),
-  safeWallet({
-    ...walletsOptions,
-    debug: false,
-    allowedDomains: [/gnosis-safe.io$/, /app.safe.global$/],
-  }),
-];
-const wagmiConnectors = connectorsForWallets([
-  {
-    groupName: "Supported Wallets",
-    wallets,
-  },
-]);
-
+// Core Wagmi Config object
 export const wagmiConfig = createConfig({
-  autoConnect: true,
   connectors: wagmiConnectors,
-  publicClient: data.publicClient,
-  webSocketPublicClient: data.webSocketPublicClient,
+  chains: getEnabledChains(), // change this to use our includedChains array in chainData.ts (will need function to assemble the array)
+  client({ chain }) {
+    return createClient({ chain, transport: http(getRpcUrl(chain.id)) }); // Initialize empty viem client as default
+  },
 });

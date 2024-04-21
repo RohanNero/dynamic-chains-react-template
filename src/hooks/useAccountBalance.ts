@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { useBalance, useNetwork } from "wagmi";
+import { useBalance, useAccount } from "wagmi";
 import {
   encodeFunctionData,
   decodeFunctionResult,
@@ -8,6 +8,9 @@ import {
 } from "viem";
 import aggregatorV3InterfaceABI from "../abi/pricefeedAbi";
 import { chainData } from "../config/chainData";
+import { wagmiConfig } from "../config/wagmiConfig";
+import { mainnet } from "viem/chains";
+import { getTransportUrl } from "../utils/getTransportUrl";
 
 // This hook is modified from Scaffold-eth 2!
 // Check them out: https://github.com/scaffold-eth/scaffold-eth-2
@@ -18,7 +21,7 @@ export function useAccountBalance(address?: string) {
   const [isEthBalance, setIsEthBalance] = useState(true);
   const [balance, setBalance] = useState<number | null>(null);
   const [price, setPrice] = useState<number | null>(null);
-  const { chain } = useNetwork();
+  const { chain } = useAccount();
 
   const targetNetworkId = chain?.id;
 
@@ -39,31 +42,31 @@ export function useAccountBalance(address?: string) {
     }
     // Easier to use mainnet Ethereum pricefeeds instead of swapping URL everytime the user switches chains.
     // For chains that don't have a native token/USD pricefeed on Ethereum mainnet,
-    // you must pass an rpc url for the chain explicity.
+    // you must pass an rpc url for the chain explicity in `/config/chainData.ts`s' `ChainData` object.
 
-    let url = "";
-    const listedUrl =
-      chain?.id && chainData[chain?.id]?.url
-        ? chainData[chain.id].url
-        : undefined;
-    if (listedUrl) {
-      console.log(`Url found: ${listedUrl}!`);
-      console.log(`Using publicClient for ${chain?.name}...`);
-      url = listedUrl;
+    let publicClient;
+
+    // Returns url listed in `chainData` config object if one exists, otherwise returns public mainnet rpc url
+    const url = await getTransportUrl(chain?.id);
+
+    // If a rpc url is listed, create our publicClient using that http, otherwise use mainnet
+    if (chainData[chain?.id]?.url) {
+      publicClient = createPublicClient({
+        transport: http(url),
+      });
     } else {
-      url = process.env.NEXT_PUBLIC_MAINNET_RPC_URL || "";
+      publicClient = createPublicClient({
+        chain: mainnet,
+        transport: http(url),
+      });
     }
-    const publicClient = createPublicClient({
-      transport: http(url),
-    });
 
     const data = encodeFunctionData({
       abi: aggregatorV3InterfaceABI,
       functionName: "latestRoundData",
     });
-    console.log("data:", data);
     console.log(
-      "to:",
+      "Pricefeed contract:",
       (chain?.id
         ? (chainData[chain?.id]?.priceFeed as `0x${string}`)
         : undefined) || undefined
@@ -104,8 +107,6 @@ export function useAccountBalance(address?: string) {
   }, [isEthBalance, price]);
 
   useEffect(() => {
-    console.log("use effect reached!");
-    console.log("fetchedBalance:", fetchedBalanceData);
     if (fetchedBalanceData?.formatted) {
       setBalance(Number(fetchedBalanceData.formatted));
     }
