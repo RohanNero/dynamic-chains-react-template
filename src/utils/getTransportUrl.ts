@@ -5,7 +5,7 @@ import { chainData } from "../config/chainData";
  * Gets the transport url from chainData object if one exists, otherwise returns hard-coded public mainnet rpc url
  * @returns transport http url for creating viem clients
  */
-export function getTransportUrl(chainId: string) {
+export function getTransportUrl(chainId: number | undefined) {
   const listedUrl =
     chainId && chainData[chainId]?.url ? chainData[chainId].url : undefined;
   if (listedUrl) {

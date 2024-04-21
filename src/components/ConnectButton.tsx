@@ -64,7 +64,7 @@ export const RainbowKitCustomConnectButton = () => {
                           className="btn-sm !rounded-xl flex py-3 gap-3"
                           type="button"
                           onClick={() => {
-                            if (chain.id) switchChain?.(1); // Hard-coded to mainnet Ethereum
+                            if (chain.id) switchChain?.({ chainId: 1 }); // Hard-coded to mainnet Ethereum
                           }}
                         >
                           <ArrowsRightLeftIcon className="h-6 w-4 ml-2 sm:ml-0" />

@@ -12,7 +12,7 @@ export const Header = () => {
   useEffect(() => {
     if (!chain || !chain.id) return;
     console.log(`Switching to chainId ${chain.id}...`);
-    switchChain?.(chain.id);
+    switchChain?.({ chainId: chain.id });
   }, [chain]);
 
   return (

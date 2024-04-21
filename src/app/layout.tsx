@@ -24,7 +24,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <WagmiProvider config={wagmiConfig}>
           <QueryClientProvider client={queryClient}>
-            <RainbowKitProvider chains={allChains}>
+            <RainbowKitProvider>
               <div>
                 <Header />
               </div>

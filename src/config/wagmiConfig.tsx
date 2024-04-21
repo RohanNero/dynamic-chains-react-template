@@ -10,8 +10,6 @@ import {
   phantomWallet,
   walletConnectWallet,
 } from "@rainbow-me/rainbowkit/wallets";
-import { alchemyProvider } from "wagmi/providers/alchemy";
-import { publicProvider } from "wagmi/providers/public";
 import { connectorsForWallets } from "@rainbow-me/rainbowkit";
 import { chainData } from "./chainData";
 import { getEnabledChains } from "../utils/getEnabledChains";
@@ -43,7 +41,7 @@ const wagmiConnectors = connectorsForWallets(
 // Core Wagmi Config object
 export const wagmiConfig = createConfig({
   connectors: wagmiConnectors,
-  chains: getEnabledChains(), 
+  chains: getEnabledChains(),
   client({ chain }) {
     return createClient({ chain, transport: http() }); // Initialize empty viem client as default
   },

@@ -32,7 +32,6 @@ export function useAccountBalance(address?: string) {
     refetch,
   } = useBalance({
     address: address as `0x${string}` | undefined,
-    watch: true,
     chainId: targetNetworkId,
   });
 
@@ -44,14 +43,13 @@ export function useAccountBalance(address?: string) {
     // For chains that don't have a native token/USD pricefeed on Ethereum mainnet,
     // you must pass an rpc url for the chain explicity in `/config/chainData.ts`s' `ChainData` object.
 
-    
-
     // Returns url listed in `chainData` config object if one exists, otherwise returns public mainnet rpc url
     const url = await getTransportUrl(chain?.id);
 
     // If an RPC URL is listed we create our publicClient using that http, otherwise use mainnet
     let publicClient;
-    if (chainData[chain?.id]?.url) {
+    const listedUrl = chain?.id ? chainData[chain?.id]?.url : undefined;
+    if (listedUrl) {
       publicClient = createPublicClient({
         transport: http(url),
       });

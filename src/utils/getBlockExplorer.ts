@@ -18,7 +18,7 @@ export function getBlockExplorerAddressLink(chainId: number, address: string) {
     return "";
   }
 
-  const chainConfig = chains[targetChain];
+  const chainConfig = chains[targetChain as keyof typeof chains];
 
   if (!chainConfig || !chainConfig?.blockExplorers) {
     console.log("Block explorer not found!");
